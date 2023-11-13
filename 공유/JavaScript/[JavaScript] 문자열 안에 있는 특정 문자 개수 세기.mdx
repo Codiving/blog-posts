@@ -1,0 +1,49 @@
+---
+title: "[JavaScript] 문자열 안에 있는 특정 문자 개수 세기"
+date: "2023-11-13"
+tags:
+  [
+    "자바스크립트 match",
+    "자바스크립트 문자 개수 세기",
+    "자바스크립트 문자 세기",
+    "자바스크립트 문자열",
+    "자바스크립트 정규식",
+    "정규식 match"
+  ]
+preview: [JavaScript] 문자열 안에 있는 특정 문자 개수 세기 자바스크립트에서 문자열 안에 있는 특정 문자 개수를 세는 함수는 따로 존재하지 않는다. 그러나 정규식을 사용하면 매우 간단하게 구할 수 있다. 특정 문자 개수 세기 바로 정답을 확인해보자.
+thumbnail: 특정문자개수.png
+---
+
+# [JavaScript] 문자열 안에 있는 특정 문자 개수 세기
+
+## 문자열 안에 있는 특정 문자 개수 세기
+
+자바스크립트에서 문자열 안에 있는 특정 문자 개수를 세는 함수는 따로 존재하지 않는다.  
+그러나 **정규식**을 사용하면 매우 간단하게 구할 수 있다.
+
+## 특정 문자 개수 세기
+
+```js
+const str = "동.해-물.과 백ㄷ.산ㅇ- 동- 동. 동 해 물";
+const chars = [".", ",", "-", "동", "해", "물", "과", "백", "산", "ㄷ", "ㅇ"];
+
+console.log(". 개수 :", str.match(/\./g)?.length);
+console.log(", 개수 :", str.match(/\,/g)?.length);
+console.log("- 개수 :", str.match(/\-/g)?.length);
+console.log("동 개수 :", str.match(/동/g)?.length);
+console.log("해 개수 :", str.match(/해/g)?.length);
+```
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/JavaScript/특정문자개수_1.png"
+  alt="이미지1"
+/>{" "}
+
+**방법** : "문자열".match(/문자/g);  
+위 방법의 경우 찾고자 하는 **문자가 문자열에 없는 경우 undefined**으로 return 이 되고 있는 경우 **배열로 ["문자", "문자"] 이렇게 해당 개수**만큼 포함이 된다.
+
+위 예시에서 , 개수 검사의 경우 str 문자열에 없기 때문에 **undefined**로 값이 나오게 된다.  
+**undefined.length를 하게되면 오류가 발생**하며 실행이 되지 않기 때문에 이런 경우 예외처리를 잘 해주어야 한다.  
+필자의 경우 **Optional chaining 문법**으로 처리하였다.
+
+나머지 경우는 실제로 문자가 있기 때문에 배열로 return이 되어 .length를 사용하여 개수를 세면 된다.
