@@ -1,0 +1,32 @@
+---
+title: "[Git] Untracked files, 추적하지 않는 파일 제거, git clean"
+date: "2023-11-13"
+tags: ["Visual Studio", "Visual Studio 버전", "Visual Studio 버전 확인"]
+preview: 설치된 Visual Studio 버전을 확인하는 방법은 어렵지 않다. Visual Studio를 실행하고 도움말(H) 클릭 -> Microsoft Visual Studio 정보 클릭 하면 끝이다. 클릭하면 아래와 같이 Microsoft Visual Studio 정보 팝업이 표시된다. Visual Studio, .Net Framework 버전, 설치된 제품 등 여러 정보가 표시된다.
+thumbnail: VS버전확인.png
+---
+
+# [Git] Untracked files, 추적하지 않는 파일 제거, git clean
+
+## Untracked files, 추적하지 않는 파일 제거
+
+Git을 사용하다 보면 **변경, 추가된 모든 파일을 제거**하고 싶은 경우가 있다.  
+이때, **git reset --hard** 명령어를 사용하게 되면 변경된 파일들은 모두 이전으로 변경된다.  
+그러나 **추적하지 않는 파일**의 경우 **제거가 되지 않는다**.
+
+## git clean 명령어
+
+**- git clean**  
+git clean 명령어를 사용하게 되면 **untracked files을 제거**할 수 있다.
+
+**- git clean -n**  
+위 명령어를 사용하면 **제거할 예정인 파일**을 보여준다.
+
+**- git clean -f**  
+위 명령어를 사용하면 **최상위에 있는 untracked files를 삭제**한다. (폴더 내 파일 X)
+
+**- git clean -fd**  
+위 명령어를 사용하면 **최상위 + 폴더 내에 있는 untracked files를 삭제**한다.
+
+**- git clean -xfd**  
+위 명령어를 사용하면 **최상위 + 폴더 내 + .gitignore에 있는 untracked files를 삭제**한다.
