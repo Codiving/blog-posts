@@ -1,0 +1,51 @@
+---
+title: "[HTML CSS] input type number 시 버튼 없애기"
+date: "2023-11-13"
+tags:
+  [
+    "CSS",
+    "HTML",
+    "input element",
+    "input number 버튼",
+    "input number 버튼 없애기",
+    "input 버튼 없애기"
+  ]
+preview: input element에서 number type을 사용하면 위, 아래 버튼을 누를 수 있게 되어 있다. 그러나 이 버튼이 필요 없는 경우가 많이 있는데 css로 해당 버튼 삭제 방법을 알아보자.
+thumbnail: input number.png
+---
+
+# [HTML CSS] input type number 시 버튼 없애기
+
+## input type number
+
+input element에서 number type을 사용하면 **위, 아래 버튼**을 누를 수 있게 되어 있다. 그러나 이 버튼이 필요 없는 경우가 많이 있는데 **css로 해당 버튼 삭제 방법**을 알아보자.
+
+## 적용하기
+
+기존
+
+```HTML
+<input type="number" />
+```
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/공유/input number_1.png"
+  alt="이미지1"
+/>
+
+기존 input element에서 **type=number** 값을 준 경우 위 이미지와 같이 오른쪽에 버튼이 표시된다. 저 버튼을 css로 없애보자. 아래 코드 참고.
+
+```HTML
+input::-webkit-inner-spin-button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+```
+
+위 css만 추가해주면 type=number 인 경우에도 버튼이 보이지 않게 된다.
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/공유/input number_2.png"
+  alt="이미지2"
+/>
