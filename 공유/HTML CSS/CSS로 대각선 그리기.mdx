@@ -1,0 +1,137 @@
+---
+title: "[HTML CSS] CSS로 대각선 그리기"
+date: "2022-09-28"
+tags:
+  [
+    "CSS",
+    "CSS 대각선",
+    "CSS 대각선 그리기",
+    "CSS 사선",
+    "CSS 사선 그리기",
+    "CSS 크로스",
+    "CSS 크로스 그리기"
+  ]
+preview: 컴포넌트를 구현하던 중 div에 대각선을 그려야 하는 작업이 필요했습니다. 어떠한 방법으로 그릴 수 있을까요? 간단하게 생각해보면 아래와 같은 방법들이 있습니다. 1. 직선을 그린 후 rotate를 이용한다. (구현 X) 2. background로 svg를 이용한다. (기존에 사용하던 방식) 3. background-gradient를 이용한다. (이번에 새로 알게됨) 위 순서대로 대각선 그리는 방법을 알아보겠습니다. 직선을 그린 후 rotate를 이용한다. 이 방법은 대각선의 길이를 먼저 계산해야합니다. 대각선 길이는 width, height을 알 수 있기 때문에 피타고라스 정리로 구할 수 있습니다. 그러나 문제는 끼인 각입니다. 정사각형의 경우 대각선과 x축의 끼인 각이 45도입니다. 그러나 만약 직사각형의 경우는 어떻게 될까요? 삼각함수 공식으로 끼인 각을 계속 구해주어야 합니다. 따라서 해당 방법은 비효율적이라고 판단되어 사용하지 않았습니다. 또한 border가 들어가는 경우 정확히 계산하기 힘듭니다.
+thumbnail: CSS_대각선.png
+---
+
+# [HTML CSS] CSS로 대각선 그리기
+
+컴포넌트를 구현하던 중 **div에 대각선**을 그려야 하는 작업이 필요했습니다.  
+어떠한 방법으로 그릴 수 있을까요?  
+간단하게 생각해보면 아래와 같은 방법들이 있습니다.
+
+1. 직선을 그린 후 **rotate**를 이용한다. (구현 X)
+2. background로 **svg를 이용**한다.  
+   (기존에 사용하던 방식)
+3. **background-gradient**를 이용한다.  
+   (이번에 새로 알게됨)
+
+위 순서대로 대각선 그리는 방법을 알아보겠습니다.
+
+### 직선을 그린 후 rotate를 이용한다.
+
+이 방법은 **대각선의 길이**를 먼저 계산해야합니다.  
+대각선 길이는 **width, height**을 알 수 있기 때문에 **피타고라스 정리**로 구할 수 있습니다.
+
+그러나 문제는 **끼인 각**입니다.  
+**정사각형**의 경우 대각선과 x축의 **끼인 각이 45도**입니다.  
+그러나 만약 **직사각형**의 경우는 어떻게 될까요?  
+**삼각함수 공식**으로 끼인 각을 계속 구해주어야 합니다.  
+따라서 **해당 방법은 비효율적**이라고 판단되어 사용하지 않았습니다.  
+또한 **border**가 들어가는 경우 정확히 계산하기 힘듭니다.
+
+### background로 svg 데이터를 이용한다.
+
+**svg를 이용**하면 아주 쉽게 **대각선**을 그릴 수 있습니다.  
+아래 코드는 **대각선, 역대각선, X**를 그리는 코드입니다.
+
+```HTML
+ <style>
+    .diagonal {
+      width: 50vw;
+      height: 10vh;
+      position: relative;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100%" y2="100%" stroke="black" /></svg>');
+    }
+
+    .reverse_diagonal {
+      width: 50vw;
+      height: 10vh;
+      position: relative;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="100%" x2="100%" y2="0" stroke="black" /></svg>');
+    }
+
+    .cross_diagonal {
+      width: 50vw;
+      height: 10vh;
+      position: relative;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100%" y2="100%" stroke="black" /></svg>'),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="100%" x2="100%" y2="0" stroke="black" /></svg>');
+    }
+  </style>
+  <body>
+    <div class="diagonal"></div>
+    <div class="reverse_diagonal"></div>
+    <div class="cross_diagonal"></div>
+  </body>
+```
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/HTMLCSS/CSS_대각선_1.gif"
+  alt="이미지1"
+/>{" "}
+
+결과를 보면 **width, height에 상관없이 유연하게 그려지는 것**을 확인할 수 있습니다.
+
+### background-gradient을 이용한다.
+
+이 방법은 우연히 찾은 방법입니다.
+
+**background 속성**을 잘 사용하면 정말 많은 것을 할 수 있는 것을 다시 알게되었습니다.  
+그러나 제가 못 하는 것인지 **X는 잘 되지 않았습니다**.  
+**대각선 그리는 코드**는 아래와 같습니다.
+
+```HTML
+ <style>
+    .diagonal {
+      width: 50vw;
+      height: 10vh;
+      background: linear-gradient(
+        to top right,
+        #fff calc(50% - 1px),
+        black,
+        #fff calc(50% + 1px)
+      );
+    }
+
+    .reverse_diagonal {
+      width: 50vw;
+      height: 10vh;
+      background: linear-gradient(
+        to bottom right,
+        #fff calc(50% - 1px),
+        black,
+        #fff calc(50% + 1px)
+      );
+    }
+  </style>
+  <body>
+    <div class="diagonal"></div>
+    <div class="reverse_diagonal"></div>
+  </body>
+```
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/HTMLCSS/CSS_대각선_2.gif"
+  alt="이미지2"
+/>{" "}
+
+해당 방법도 **width, height에 상관없이 유연하게 그려지는 것**을 확인할 수 있습니다.
+
+**background-gradient를 이용하여 대각선을 그리는 방법**은 생각하지 못 하여 게시글을 작성하였습니다.  
+**background를 이용**하면 많은 것을 할 수 있는 것 같습니다.
+
+## 참고자료
+
+[background-gradient 이용하여 대각선 그리기](https://codepen.io/navenoc13/pen/YzpXrOg)
