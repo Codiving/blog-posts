@@ -22,24 +22,20 @@ form data에서 json, json에서 form data로 자료를 변환할 일이 있어�
 ## FormData를 Json 객체로 변환하기
 
 ```js
-const obj = {
-  apple: "사과",
-  banana: "바나나",
-  cherry: "체리"
-};
+const formData = new FormData();
+formData.append("apple", "사과");
+formData.append("banana", "바나나");
+formData.append("cherry", "체리");
 
-const formData = Object.keys(obj).reduce((formData, key) => {
-  formData.append(key, obj[key]);
-  return formData;
-}, new FormData());
+const json = Object.fromEntries(Array.from(formData.entries()));
 
-console.log(formData);
+console.log(json);
 ```
 
 ## Json 객체를 FormData로 변환하기
 
 ```js
-const json: Record<string, any> = {
+const json = {
   apple: "사과",
   banana: "바나나",
   cherry: "체리"
@@ -51,5 +47,7 @@ Object.keys(json).forEach(key => {
   formData.append(key, json[key]);
 });
 
-console.log(formData);
+for (const value of formData.entries()) {
+  console.log(value[0] + ", " + value[1]);
+}
 ```
