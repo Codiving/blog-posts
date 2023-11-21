@@ -1,0 +1,42 @@
+---
+title: "[JavaScript] 배열 무작위 정렬, 랜덤 정렬"
+date: "2023-11-20"
+tags:
+  [
+    "자바스크립트 랜덤 정렬",
+    "자바스크립트 배열 랜덤 정렬",
+    "자바스크립트 배열 정렬",
+    "랜덤 정렬",
+    "배열 랜덤 정렬",
+    "배열 정렬"
+  ]
+preview: 구현하다 보면 배열을 랜덤 정렬 하고 싶을 때가 있다. 간단한 예로 랜덤 퀴즈를 만들고 있다고 생각해보자. 그럼 문제를 랜덤하게 뽑아야 한다. 이럴 때 간단하게 사용할 수 있는 방법을 알아보자.  
+thumbnail:배열_무작위_정렬.png
+---
+
+# [JavaScript] 배열 무작위 정렬, 랜덤 정렬
+
+구현하다 보면 **배열을 랜덤 정렬** 하고 싶을 때가 있다.  
+간단한 예로 랜덤 퀴즈를 만들고 있다고 생각해보자.  
+그럼 문제를 랜덤하게 뽑아야 한다.  
+이럴 때 간단하게 사용할 수 있는 방법을 알아보자.
+
+## 배열 랜덤 정렬
+
+```js
+const shuffle = () => Math.random() - 0.5;
+const quizs = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const shuffled = [...quizs].sort(shuffle);
+
+console.log("quizs", quizs);
+console.log("shuffled quizs", shuffled);
+```
+
+위 **shuffle 함수**를 사용하면 아주 간단하게 정렬할 수 있다.
+
+아래 사진은 웹 콘솔창에서 간단하게 테스트한 결과이다.
+
+<PostImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/JavaScript/배열_무작위_정렬_1.png"
+  alt="이미지1"
+/>{" "}
