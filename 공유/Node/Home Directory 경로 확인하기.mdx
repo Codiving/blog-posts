@@ -1,0 +1,44 @@
+---
+title: "[Node] Home Directory 경로 확인하기"
+date: "2023-02-13"
+tags:
+  [
+    "node",
+    "node 홈 경로",
+    "node 홈 경로 확인하기",
+    "node os",
+    "node os별 홈 경로",
+    "node os별 home 경로",
+  ]
+preview: node에서 home directory 경로 확인하기 nodejs 개발하면서 home directory가 필요한 경우가 있습니다. 그러나 OS별로 home directory 경로가 다르기 때문에 직접 처리하려면 일일이 작성해주어야 합니다. Home directory 경로는 node에서 제공해주는 함수를 이용하면 쉽게 얻어올 수 있습니다. Home directory 경로 확인 아래 코드를 실행하면 끝입니다. const homedir = require("os").homedir(); console.log("homedir : ", homedir);  
+thumbnail: node_홈_경로.png
+---
+
+# [Node] Home Directory 경로 확인하기
+
+nodejs 개발하면서 **home directory**가 필요한 경우가 있습니다.  
+그러나 OS별로 home directory 경로가 다르기 때문에 직접 처리하려면 일일이 작성해주어야 합니다.  
+Home directory 경로는 **node에서 제공해주는 함수**를 이용하면 쉽게 얻어올 수 있습니다.
+
+## Home directory 경로 확인
+
+아래 코드를 실행하면 끝입니다.
+
+```js
+const homedir = require("os").homedir();
+console.log("homedir : ", homedir);
+```
+
+### mac
+
+<PostFullWidthImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/Node/홈_경로_1.png"
+  alt="이미지1"
+/>
+
+### window
+
+<PostFullWidthImage
+  src="https://raw.githubusercontent.com/Codiving/blog-posts/main/Images/Node/홈_경로_2.png"
+  alt="이미지1"
+/>

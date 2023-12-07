@@ -1,0 +1,42 @@
+---
+title: "[Node] 파일 이름, 확장자 확인하기"
+date: "2023-02-15"
+tags:
+  [
+    "node",
+    "node 파일 이름",
+    "node 파일 이름 가져오기",
+    "node 파일 확장자",
+    "node 파일 확장자 가져오기",
+    "node 확장자",
+    "nodejs"
+  ]
+preview: node에서 파일 이름, 확장자 확인하기 nodejs 개발하면서 파일 이름, 확장자를 확인 해야하는 경우가 있습니다. 간단하게 구분하는 방법은 . 으로 split해서 할 수 있습니다. 그러나 nodejs에서 제공해주는 함수를 이용하면 더 쉽게 파일 이름, 확장자를 확인할 수 있습니다. 파일 이름 확인하기 아래 코드를 실행하면 끝입니다. filepath에는 파일 경로를 넣어주시면 됩니다. const path = require("path"); console.log("file name : ", path.basename(filepath)) 파일 확장자 확인하기 아래 코드를 실행하면 끝입니다. filepath에는 파일 경로를 넣어주시면 됩니다. const path = require("path"); console.log("file ext : ", path.extname(filepath))  
+thumbnail: node_확장자.png
+---
+
+# [Node] 파일 이름, 확장자 확인하기
+
+nodejs 개발하면서 **파일 이름, 확장자**를 확인 해야하는 경우가 있습니다.  
+간단하게 구분하는 방법은 . 으로 split해서 할 수 있습니다.  
+그러나 **nodejs에서 제공해주는 함수**를 이용하면 더 쉽게 파일 이름, 확장자를 확인할 수 있습니다.
+
+## 파일 이름 확인하기
+
+아래 코드를 실행하면 끝입니다.  
+filepath에는 **파일 경로**를 넣어주시면 됩니다.
+
+````js
+const path = require("path");
+console.log("file name : ", path.basename(filepath))
+``
+
+## 파일 확장자 확인하기
+
+아래 코드를 실행하면 끝입니다.
+filepath에는 **파일 경로**를 넣어주시면 됩니다.
+
+```js
+const path = require("path");
+console.log("file ext : ", path.extname(filepath))
+````
